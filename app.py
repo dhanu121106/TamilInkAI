@@ -229,7 +229,7 @@ st.sidebar.header("OCR Settings")
 ocr_engine = st.sidebar.selectbox(
     "OCR Engine",
     [
-        "Gemini AI",
+        "TamilInk AI",
         "Tesseract (Offline)"
     ]
 )
@@ -335,7 +335,7 @@ if uploaded_file is not None:
 
         if st.button("Recognize Tamil Text", type="primary"):
 
-            if ocr_engine == "Gemini AI":
+            if ocr_engine == "TamilInk AI":
 
                 if not os.getenv("GEMINI_API_KEY"):
                     st.error("GEMINI_API_KEY is missing from .env.")
@@ -343,7 +343,7 @@ if uploaded_file is not None:
                 else:
                     try:
                         with st.spinner(
-                            "Gemini is transcribing the Tamil document..."
+                            "TamilInk AI is transcribing the Tamil document..."
                         ):
                             image_buffer = BytesIO()
                             original.save(
@@ -360,10 +360,10 @@ if uploaded_file is not None:
                         st.session_state["ocr_image_name"] = uploaded_file.name
                         st.session_state["ocr_candidates"] = []
 
-                        st.success("Gemini transcription completed.")
+                        st.success("TamilInk AI transcription completed.")
 
                     except Exception as exc:
-                        st.error(f"Gemini OCR failed: {exc}")
+                        st.error(f"TamilInk AI OCR failed: {exc}")
 
             else:
                 if error:

@@ -100,7 +100,7 @@ def prepare_image(image: Image.Image) -> bytes:
 # --------------------------------------------------
 
 def extract_tamil(image_bytes: bytes) -> str:
-    """Send an image to Gemini and return its Tamil transcription."""
+    """Send an image to TamilInk AI and return its Tamil transcription."""
 
     response = client.models.generate_content(
         model=MODEL,
@@ -119,7 +119,7 @@ def extract_tamil(image_bytes: bytes) -> str:
     text = response.text
 
     if not text or not text.strip():
-        raise RuntimeError("Gemini returned an empty transcription.")
+        raise RuntimeError("TamilInk AI returned an empty transcription.")
 
     return text.strip()
 
